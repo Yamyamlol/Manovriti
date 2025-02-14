@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-
+import "../index.css"
 
 export default function NoteEditor({ note, onSave }) {
   const [content, setContent] = useState(note.content)
@@ -18,7 +18,7 @@ export default function NoteEditor({ note, onSave }) {
       </button>
       <div className="flex-grow relative">
         <div className="absolute inset-0 bg-notebook-paper"></div>
-        <textarea
+        <textarea   
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="w-full h-full p-4 bg-transparent relative z-10 resize-none focus:outline-none"
