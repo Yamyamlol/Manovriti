@@ -1,1 +1,0 @@
-// calender, emotion of the month, weekly emotion, and daily emotion

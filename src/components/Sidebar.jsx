@@ -8,7 +8,7 @@ function Sidebar({ onPageChange }) {
   const navItems = [
     { name: "Chat with Manovriti", page: "Chat" },
     { name: "Journal", page: "Journal" },
-    { name: "Emotion Calendar", page: "EmotionCalendar" },
+    { name: "Emotion Calendar", page: "EmotionalCalendar" },
     { name: "Chat History", page: "ChatHistory" },
     { name: "Settings", page: "Settings" },
     { name: "Talk to a Therapist", page: "Therapist", isPremium: true },

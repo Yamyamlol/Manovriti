@@ -2,7 +2,7 @@ import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ChatWindow from "./components/Chatwindow";
 import Journal from "./components/pages/Journal";
-
+import EmotionalCalender from "./components/pages/EmotionalCalendar";
 export default function Page() {
   const [activePage, setActivePage] = useState(null);
 
@@ -15,6 +15,7 @@ export default function Page() {
       <Sidebar onPageChange={handlePageChange} />
       {activePage === "Chat" && <ChatWindow />}
       {activePage === "Journal" && <Journal />}
+      {activePage === "EmotionalCalendar" && <EmotionalCalender />}
       {/* Add other pages here */}
     </div>
   );
