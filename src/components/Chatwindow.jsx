@@ -5,7 +5,7 @@ import bgPNG from "../assets/bg.png";
 
 export default function ChatWindow() {
   return (
-    <div className={`flex-1 flex flex-col`}>
+    <div className={`flex-1 flex flex-col h-screen`}>
       <CompanionHeader />
       <div
         className="flex h-full overflow-auto"
