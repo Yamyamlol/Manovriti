@@ -42,9 +42,8 @@ function Sidebar({ onPageChange }) {
               <div
                 key={index}
                 onClick={() => handleItemClick(index)}
-                className={`text-[#292B39] font-bold w-full text-left cursor-pointer p-2 rounded-lg transition-colors duration-200 flex justify-center items-center ${
-                  activeItem === index ? "bg-[#8796C3]" : "hover:bg-[#ABB7D9]"
-                }`}
+                className={`text-[#292B39] font-bold w-full text-left cursor-pointer p-2 rounded-lg transition-colors duration-200 flex justify-center items-center ${activeItem === index ? "bg-[#8796C3]" : "hover:bg-[#ABB7D9]"
+                  }`}
               >
                 {item.name}
                 {item.isPremium && <img alt="" className="w-10 h-10" src={speakerIcon}></img>}
@@ -54,11 +53,14 @@ function Sidebar({ onPageChange }) {
         </div>
 
         <div className="space-y-4">
-          <div className="text-[#292B39] font-bold cursor-pointer p-2 rounded-lg hover:bg-[#ABB7D9] hover:text- transition-colors duration-200">
+          <div className="text-[#292B39] font-bold cursor-pointer p-2 rounded-lg hover:bg-[#ABB7D9] hover:text- transition-colors duration-200 flex justify-center items-center">
             Go Premium
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(243,186,69,1)" className="w-8 h-8 m-2"><path fill="none" d="M0 0h24v24H0z" ></path><path d="M2.00488 19H22.0049V21H2.00488V19ZM2.00488 5L7.00488 8L12.0049 2L17.0049 8L22.0049 5V17H2.00488V5Z"></path></svg>
+            
           </div>
-          <div className="text-[#292B39] font-bold cursor-pointer p-2 rounded-lg hover:bg-[#ABB7D9] transition-colors duration-200">
+          <div className="text-[#292B39] font-bold cursor-pointer p-2 rounded-lg hover:bg-[#ABB7D9] transition-colors duration-200 flex justify-center items-center">
             Logout
+            <i className="fa-solid fa-right-from-bracket m-2"></i>
           </div>
         </div>
       </div>
