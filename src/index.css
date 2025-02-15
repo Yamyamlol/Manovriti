@@ -1,1 +1,12 @@
 @import "tailwindcss";
+.bg-notebook-paper {
+    background-color: #fef7d8; 
+    background-image: 
+      linear-gradient(0deg, rgba(255, 220, 0, 0.2) 1px, transparent 1px);
+    background-size: 100% 20px; 
+    border-radius: 16px; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+    padding: 16px;
+  }
+  
+  

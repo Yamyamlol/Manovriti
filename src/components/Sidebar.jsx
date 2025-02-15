@@ -2,16 +2,16 @@ import speakerIcon from "../assets/speaker.svg";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-function Sidebar({ onChatClick }) {
+function Sidebar({ onPageChange }) {
   const [activeItem, setActiveItem] = useState(null);
 
   const navItems = [
-    { name: "Chat with Manovriti", onClick: onChatClick },
-    { name: "Journal" },
-    { name: "Emotion Calendar" },
-    { name: "Chat History" },
-    { name: "Settings" },
-    { name: "Talk to a Therapist", isPremium: true },
+    { name: "Chat with Manovriti", page: "Chat" },
+    { name: "Journal", page: "Journal" },
+    { name: "Emotion Calendar", page: "EmotionCalendar" },
+    { name: "Chat History", page: "ChatHistory" },
+    { name: "Settings", page: "Settings" },
+    { name: "Talk to a Therapist", page: "Therapist", isPremium: true },
   ];
 
   const handleItemClick = (index) => {
@@ -19,8 +19,8 @@ function Sidebar({ onChatClick }) {
       setActiveItem(null);
     } else {
       setActiveItem(index);
-      if (navItems[index].onClick) {
-        navItems[index].onClick();
+      if (navItems[index].page) {
+        onPageChange(navItems[index].page);
       }
     }
   };
@@ -47,7 +47,7 @@ function Sidebar({ onChatClick }) {
                 }`}
               >
                 {item.name}
-                {navItems.isPremium && <img alt="" className="w-10 h-10" src={speakerIcon}></img>}
+                {item.isPremium && <img alt="" className="w-10 h-10" src={speakerIcon}></img>}
               </div>
             ))}
           </nav>
@@ -67,7 +67,7 @@ function Sidebar({ onChatClick }) {
 }
 
 Sidebar.propTypes = {
-  onChatClick: PropTypes.func.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
