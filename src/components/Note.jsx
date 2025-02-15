@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "../index.css"
 export default function Note({ note, onEdit }) {
   const sizeClasses = {
     small: "h-40",
