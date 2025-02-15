@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import ChatWindow from "./components/Chatwindow";
 import Journal from "./components/pages/Journal";
+import EmotionalCalendar from "./components/pages/EmotionalCalendar";
 
 export default function App() {
   const [activePage, setActivePage] = useState(null);
@@ -16,6 +17,7 @@ export default function App() {
       <div className="overflow-auto flex-1 h-full"> 
         {activePage === "Chat" && <ChatWindow />}
         {activePage === "Journal" && <Journal />}
+        {activePage === "EmotionalCalendar" && <EmotionalCalendar />}
         {/* Add other pages here */}
       </div>
     </div>
