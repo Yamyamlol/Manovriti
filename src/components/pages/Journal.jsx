@@ -1,7 +1,9 @@
-import { useState } from "react"
-import SearchBar from "../SearchBar"
-import NoteGrid from "../NoteGrid"
-import NoteEditor from "../NoteEditor"
+import { useState } from "react";
+import SearchBar from "../SearchBar";
+import NoteGrid from "../NoteGrid";
+import NoteEditor from "../NoteEditor";
+import Button from "../ui/Button";
+
 export default function Journal() {
   const [notes, setNotes] = useState([
     { id: 1, content: "This is a short note.", size: "small" },
@@ -12,44 +14,55 @@ export default function Journal() {
         "This is a longer note with even more content. It should take up more space in the grid to accommodate its length.",
       size: "large",
     },
-  ])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [editingNote, setEditingNote] = useState(null)
+  ]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [editingNote, setEditingNote] = useState(null);
 
-  const filteredNotes = notes.filter((note) => note.content.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filteredNotes = notes.filter((note) =>
+    note.content.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleCreateNote = () => {
     const newNote = {
       id: Date.now(),
       content: "",
       size: "small",
-    }
-    setNotes([...notes, newNote])
-    setEditingNote(newNote)
-  }
+    };
+    setNotes([...notes, newNote]);
+    setEditingNote(newNote);
+  };
 
   const handleSaveNote = (updatedNote) => {
-    setNotes(notes.map((note) => (note.id === updatedNote.id ? updatedNote : note)))
-    setEditingNote(null)
-  }
+    setNotes(
+      notes.map((note) => (note.id === updatedNote.id ? updatedNote : note))
+    );
+    setEditingNote(null);
+  };
+
+  const handleDeleteNote = (noteId) => {
+    setNotes(notes.filter((note) => note.id !== noteId)); // Delete the note
+    setEditingNote(null); // Close the editor
+  };
+  
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-semibold mb-6 text-gray-800">My Journal</h1>
+    <div className="container mx-auto p-6 bg-[#EEE9F7] rounded-lg shadow-lg">
+      <h1 className="text-4xl font-bold text-[#3D53A0] mb-8">My Journal</h1>
       {editingNote ? (
-        <NoteEditor note={editingNote} onSave={handleSaveNote} />
+        <NoteEditor
+          note={editingNote}
+          onSave={handleSaveNote}
+          onDelete={handleDeleteNote} 
+        />
       ) : (
         <>
           <div className="flex justify-between items-center mb-6">
             <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <button onClick={handleCreateNote}>
-               New Note
-            </button>
+            <Button onClick={handleCreateNote}>New Note</Button>
           </div>
           <NoteGrid notes={filteredNotes} onEditNote={setEditingNote} />
         </>
       )}
     </div>
-  )
+  );
 }
-

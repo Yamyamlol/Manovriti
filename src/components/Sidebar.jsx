@@ -34,7 +34,7 @@ function Sidebar({ onPageChange }) {
           </div>
           <div className="flex items-center justify-center space-x-2 mb-6">
             <div className="h-[1px] mt-[4px] w-10 bg-black"></div>
-            <span className="text-xl font-sm">×</span>
+            <span className="text-xl font-sm">x</span>
             <div className="h-[1px] mt-[4px] w-10 bg-black"></div>
           </div>
           <nav className="space-y-4">
