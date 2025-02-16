@@ -24,10 +24,9 @@ const emotions = {
   confused: { color: "bg-purple-200", emoji: "🤔" },
 };
 
-const EmotionalCalendar = () => {
+const Calendar = ({ calendarEmotions, setCalendarEmotions, setSelectedDate }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [calendarEmotions, setCalendarEmotions] = useState({});
+  const [selectedDateState, setSelectedDateState] = useState(null);
   const [hoveredDate, setHoveredDate] = useState(null);
 
   const daysInMonth = eachDayOfInterval({
@@ -47,22 +46,23 @@ const EmotionalCalendar = () => {
 
   const handleDateClick = (date) => {
     if (isSameMonth(date, currentDate) && !isAfter(date, today)) {
-      setSelectedDate(date);
+      setSelectedDateState(date);
+      setSelectedDate(date); // Set the selected date in the parent component (EmotionalCalendar)
     }
   };
 
   const handleEmotionSelect = useCallback(
     (emotion) => {
-      if (selectedDate) {
-        const dateKey = format(selectedDate, "yyyy-MM-dd");
+      if (selectedDateState) {
+        const dateKey = format(selectedDateState, "yyyy-MM-dd");
         setCalendarEmotions((prev) => ({
           ...prev,
           [dateKey]: emotions[emotion].emoji,
         }));
-        setSelectedDate(null);
+        setSelectedDateState(null);
       }
     },
-    [selectedDate]
+    [selectedDateState, setCalendarEmotions]
   );
 
   return (
@@ -103,50 +103,40 @@ const EmotionalCalendar = () => {
             const emotion = calendarEmotions[dateKey];
             const isCurrentMonth = isSameMonth(date, currentDate);
             const isFuture = isAfter(date, today);
-            const isHovered = hoveredDate === dateKey;
 
             return (
               <button
                 key={date.toString()}
                 onClick={() => handleDateClick(date)}
-                onMouseEnter={() => setHoveredDate(dateKey)}
-                onMouseLeave={() => setHoveredDate(null)}
                 className={`h-12 flex items-center justify-center rounded-lg transition cursor-pointer 
                 ${!isCurrentMonth ? "text-gray-300" : "hover:bg-gray-50"} 
-                ${
-                  selectedDate && date.getTime() === selectedDate.getTime()
-                    ? "bg-gray-100"
-                    : ""
-                } 
-                ${isFuture ? "text-gray-300 cursor-not-allowed" : ""}
+                ${selectedDateState && date.getTime() === selectedDateState.getTime()
+                  ? "bg-gray-100"
+                  : ""} 
+                ${isFuture ? "text-gray-300 cursor-not-allowed" : ""} 
                 ${
                   emotion
-                    ? `text-3xl ${
-                        Object.values(emotions).find((e) => e.emoji === emotion)
-                          ?.color
-                      }`
+                    ? `text-3xl ${Object.values(emotions).find((e) => e.emoji === emotion)?.color}`
                     : "text-xl"
                 }`}
                 disabled={!isCurrentMonth || isFuture}
               >
                 <span className="w-full h-full flex items-center justify-center text-xl flex-shrink-0">
-                  {isHovered && emotion
-                    ? format(date, "d")
-                    : emotion || format(date, "d")}
+                  {emotion || format(date, "d")}
                 </span>
               </button>
             );
           })}
         </div>
 
-        {selectedDate && (
+        {selectedDateState && (
           <div className="mt-6 animate-scale-in">
             <h3 className="text-sm font-medium text-gray-600 mb-2">
-              {selectedDate &&
-                (format(selectedDate, "yyyy-MM-dd") ===
+              {selectedDateState &&
+                (format(selectedDateState, "yyyy-MM-dd") ===
                 format(today, "yyyy-MM-dd")
                   ? "How are you feeling today?"
-                  : `How were you on ${format(selectedDate, "MMMM d")}`)}
+                  : `How were you on ${format(selectedDateState, "MMMM d")}`)}
             </h3>
 
             <div className="grid grid-cols-4 gap-2">
@@ -167,4 +157,4 @@ const EmotionalCalendar = () => {
   );
 };
 
-export default EmotionalCalendar;
+export default Calendar;

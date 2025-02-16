@@ -9,7 +9,7 @@ export default function SearchBar({ searchTerm, setSearchTerm }) {
         placeholder="Search notes..."
         value={searchTerm}
         onChange={handleSearch}
-        className="w-full max-w-xs p-3 rounded-lg border border-[#8796C3] focus:outline-none focus:ring-2 focus:ring-[#3D53A0] focus:border-[#3D53A0] transition-all duration-300"
+        className="w-full max-w-xs p-3 rounded-lg border border-red-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-all duration-300"
       />
     )
   }
