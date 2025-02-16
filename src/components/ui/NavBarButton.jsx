@@ -7,6 +7,7 @@ function NavBarButton({
   isPremium = false,
   customBgColor = "bg-red-100",
   customHoverColor = "hover:bg-red-200",
+  icon
 }) {
   return (
     <div
@@ -16,6 +17,7 @@ function NavBarButton({
       } ${customBgColor}`}
     >
       {label}
+      {icon}
       {isPremium && (
         <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +40,7 @@ NavBarButton.propTypes = {
   isPremium: PropTypes.bool,
   customBgColor: PropTypes.string,
   customHoverColor: PropTypes.string,
+  icon : PropTypes.node
 };
 
 export default NavBarButton;

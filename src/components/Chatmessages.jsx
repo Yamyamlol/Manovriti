@@ -43,7 +43,7 @@ export default function ChatMessages() {
           </div>
           <div className="flex flex-col items-center justify-center">
             {message.sender !== "user" && (
-              <img className="pl-3 h-10 w-10" src={speakerIcon} alt="" />
+              <img className="pl-3 h-8 w-8 opacity-45" src={speakerIcon} alt="" />
             )}
           </div>
         </div>

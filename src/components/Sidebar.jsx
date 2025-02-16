@@ -59,14 +59,13 @@ function Sidebar({ onPageChange }) {
             isActive={false}
             isPremium = {true}
             onClick={() => {}}
-            customHoverColor="hover:bg-[#ABB7D9]"
           />
           <NavBarButton
             label="Logout"
             isActive={false}
             onClick={() => {}}
             iconColor="black"
-            customHoverColor="hover:bg-[#ABB7D9]"
+            icon={<i class="fa-solid fa-right-from-bracket ml-2"></i>}
           />
         </div>
       </div>
