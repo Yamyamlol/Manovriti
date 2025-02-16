@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "../index.css"; 
-import ConfirmModal from "./ui/ConfirmModel"; 
+import "../index.css";
+import ConfirmModal from "./ui/ConfirmModel";
+import Button from "./ui/Button";
 
 export default function NoteEditor({ note, onSave, onDelete }) {
   const [content, setContent] = useState(note.content);
@@ -32,25 +33,23 @@ export default function NoteEditor({ note, onSave, onDelete }) {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-[#00000080] z-50 p-4">
-      <div className="bg-[#EEE9F7] p-6 rounded-xl w-full max-w-2xl shadow-lg">
-        {/* Save Button */}
-        <button
-          onClick={handleSave}
-          className="text-[#3D53A0] font-bold mb-4 px-4 py-2 bg-transparent border border-[#3D53A0] rounded-md hover:bg-[#3D53A0] hover:text-white transition-all"
-        >
-          Save Note
-        </button>
+      <div className="bg-[#EEE9F7] p-6 rounded-xl w-full max-w-2xl shadow-lg flex flex-col">
+        {/* Top bar: Save button on left, Trash icon on right */}
+        <div className="flex justify-between items-center mb-4">
+          {/* Save Button on the Left */}
+          <Button onClick={handleSave}>
+            Save
+          </Button>
 
-        {/* Delete Button */}
-        <button
-          onClick={handleDelete}
-          className="text-red-600 font-bold mb-4 px-4 py-2 bg-transparent border border-red-600 rounded-md hover:bg-red-600 hover:text-white transition-all"
-        >
-          Delete Note
-        </button>
+          {/* Trash Can Icon on the Right */}
+          <i
+            className="fa-solid fa-trash-can text-3xl cursor-pointer text-[#FF4747] hover:text-[#D13F3F]"
+            onClick={handleDelete}
+          ></i>
+        </div>
 
         {/* Note Editor */}
-        <div className="relative">
+        <div className="relative mb-4">
           {/* Background */}
           <div className="absolute inset-0 bg-notebook-paper bg-cover bg-center z-0"></div>
 
