@@ -8,7 +8,7 @@ export default function ChatWindow() {
     <div className={`flex-1 flex flex-col h-screen`}>
       <CompanionHeader />
       <div
-        className="flex h-full overflow-auto"
+        className="bg-red-50 flex h-full overflow-auto"
         style={{
           backgroundImage: `url(${bgPNG})`,
           backgroundSize: "300px",

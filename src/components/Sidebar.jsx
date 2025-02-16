@@ -1,4 +1,5 @@
 import speakerIcon from "../assets/speaker.svg";
+import crownIcon from "../assets/crown.svg";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -8,7 +9,7 @@ function Sidebar({ onPageChange }) {
   const navItems = [
     { name: "Chat with Manovriti", page: "Chat" },
     { name: "Journal", page: "Journal" },
-    { name: "Emotion Calendar", page: "EmotionCalendar" },
+    { name: "Emotion Calendar", page: "EmotionalCalendar" },
     { name: "Chat History", page: "ChatHistory" },
     { name: "Settings", page: "Settings" },
     { name: "Talk to a Therapist", page: "Therapist", isPremium: true },
@@ -26,7 +27,7 @@ function Sidebar({ onPageChange }) {
   };
 
   return (
-    <div className="w-64 p-4 rounded-r-xl bg-[#DFD9EA] flex flex-col h-screen">
+    <div className="w-64 p-4 rounded-r-xl bg-red-100 flex flex-col h-screen">
       <div className="flex flex-col justify-between flex-grow">
         <div>
           <div className="flex justify-center text-3xl text-[#292B39] font-black">
@@ -42,11 +43,12 @@ function Sidebar({ onPageChange }) {
               <div
                 key={index}
                 onClick={() => handleItemClick(index)}
-                className={`text-[#292B39] font-bold w-full text-left cursor-pointer p-2 rounded-lg transition-colors duration-200 flex justify-center items-center ${activeItem === index ? "bg-[#8796C3]" : "hover:bg-[#ABB7D9]"
-                  }`}
+                className={`text-[#292B39] font-bold w-full text-left cursor-pointer p-2 rounded-lg transition-colors duration-200 flex justify-center items-center ${
+                  activeItem === index ? "bg-red-300" : "hover:bg-red-200"
+                }`}
               >
                 {item.name}
-                {item.isPremium && <img alt="" className="w-10 h-10" src={speakerIcon}></img>}
+                {item.isPremium && <img alt="" className="w-10 h-10" src={crownIcon}></img>}
               </div>
             ))}
           </nav>
