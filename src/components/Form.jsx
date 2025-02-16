@@ -20,7 +20,7 @@ const Form = ({ formType }) => {
       {formType === "pro" && (
         <a
           href="#"
-          className="flex text-xs text-gray-500 justify-end hover:text-indigo-600 transition-colors duration-300"
+          className="flex text-xs text-gray-500 justify-end hover:text-gray-600 transition-colors duration-300"
         >
           Forgot password?
         </a>
@@ -28,7 +28,7 @@ const Form = ({ formType }) => {
 
       <button
         type="submit"
-        className="w-full bg-indigo-600 text-white py-1.5 px-4 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold hover:bg-blue-700 transition"
+        className="w-full bg-red-400 text-white py-1.5 px-4 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold hover:bg-red-300 transition cursor-pointer"
       >
         {formType === "pro" ? "Sign In" : "Sign Up"}
       </button>

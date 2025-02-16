@@ -8,15 +8,16 @@ export default function Note({ note, onEdit }) {
   };
 
   const colors = [
-    "#3D53A0", // Deep blue
-    "#7191E6", // Light blue
-    "#8796C3", // Soft blue-gray
-    "#ADBBDB", // Light slate blue
-    "#EEE9F7", // Light lavender
-    "#C8D0E6", // Soft pastel blue
-    "#F1A7C9", // Soft pink
-    "#F5E1C8", // Pale yellow
-  ];
+    "#FAD0C9", // Soft peach
+    "#F9D5E5", // Light blush pink
+    "#D3E4F4", // Soft light blue
+    "#D6E7D6", // Soft mint green
+    "#E6D3F1", // Light lavender purple
+    "#F1E6B9", // Soft light yellow
+    "#C3D9A0", // Pale olive green
+    "#C0C9F7", // Light sky blue
+];
+
 
   const [randomColor, setRandomColor] = useState("");
 

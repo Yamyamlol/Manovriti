@@ -1,16 +1,30 @@
+import React, { useState, useCallback } from "react";
 import Calendar from "../Calendar";
 import MonthlyEmotion from "../MonthlyEmotion";
-import WeeklyView from "../WeeklyView.jsx";
+import WeeklyView from "../WeeklyView";
 
 const EmotionalCalendar = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [calendarEmotions, setCalendarEmotions] = useState({});
+  const [hoveredDate, setHoveredDate] = useState(null);
+
+  // Other logic (handlePreviousMonth, handleNextMonth, etc.)
+
   return (
     <div className="min-h-screen max-h-screen">
-      <div className="flex ">
-        <Calendar />
-        <MonthlyEmotion />
+      <div className="flex">
+        <Calendar
+          calendarEmotions={calendarEmotions}
+          setCalendarEmotions={setCalendarEmotions}
+          setSelectedDate={setSelectedDate}
+        />
+        <MonthlyEmotion calendarEmotions={calendarEmotions} />
       </div>
       <div>
-        <WeeklyView />
+        <WeeklyView
+          calendarEmotions={calendarEmotions}
+        />
       </div>
     </div>
   );

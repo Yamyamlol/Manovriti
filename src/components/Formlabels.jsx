@@ -13,7 +13,7 @@ const FormLabels = ({ label, id, type = "text", required = false }) => {
         type={type}
         id={id}
         name={id}
-        className="mt-0.5 block w-full px-2 py-1 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-md outline-none focus:border-2 focus:border-indigo-600"
+        className="mt-0.5 block w-full px-2 py-1 sm:py-2 text-xs sm:text-sm border border-gray-300 rounded-md outline-none focus:border-2 focus:border-red-600 focus:ring-1 focus:ring-red-500"
         required={required}
       />
     </div>

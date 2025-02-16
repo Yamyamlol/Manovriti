@@ -12,7 +12,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="flex bg-red-100">
+    <div className="flex bg-red-50">
       <Sidebar onPageChange={handlePageChange} />
       <div className="overflow-auto flex-1 h-full">
         {activePage === "Chat" && <ChatWindow />}
