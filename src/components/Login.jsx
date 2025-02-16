@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import googleLogo from "/src/assets/google.svg";
 import Form from "./Form";
 import { Heading } from "./heading/Heading";
 
 const Login = () => {
   const [activeButton, setActiveButton] = useState("user");
+  const navigate = useNavigate(); // Initialize navigate function
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6 sm:px-10 py-6 sm:py-10 bg-red-50">
@@ -12,13 +14,13 @@ const Login = () => {
         <div className="text-center">
           <Heading
             style="font-bold text-lg sm:text-xl tracking-tight text-[#292B39]"
-            label="Welcome to Manovriti"
+            label="Welcome to Manovritti"
           />
           <p className="text-xs sm:text-sm font-extralight text-gray-500 pb-2">
             Sign in to your account
           </p>
         </div>
-        
+
         {/* Google Sign-In Button */}
         <div className="flex justify-center items-center gap-2 cursor-pointer border border-gray-300 p-2 rounded-lg transition duration-300 hover:bg-red-200">
           <img
@@ -44,7 +46,9 @@ const Login = () => {
         <div className="flex bg-red-100 rounded-xl mb-4 overflow-hidden">
           <div
             className={`flex-1 m-1 text-center py-2 sm:py-3 cursor-pointer font-semibold text-xs sm:text-sm transition-all duration-300 rounded-lg ${
-              activeButton === "user" ? "bg-red-200 text-black" : "text-gray-600"
+              activeButton === "user"
+                ? "bg-red-200 text-black"
+                : "text-gray-600"
             }`}
             onClick={() => setActiveButton("user")}
           >
@@ -80,7 +84,10 @@ const Login = () => {
 
         {/* Back to Home Button */}
         <div className="text-center mt-4">
-          <button className="w-full border border-gray-300 py-2 sm:py-3 font-semibold px-4 sm:px-6 rounded-lg text-xs sm:text-sm hover:bg-red-200 transition cursor-pointer">
+          <button
+            className="w-full border border-gray-300 py-2 sm:py-3 font-semibold px-4 sm:px-6 rounded-lg text-xs sm:text-sm hover:bg-red-200 transition cursor-pointer"
+            onClick={() => navigate("/")} // Redirect to home
+          >
             Back to Home
           </button>
         </div>

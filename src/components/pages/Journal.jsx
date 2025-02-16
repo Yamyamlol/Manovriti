@@ -47,7 +47,7 @@ export default function Journal() {
 
   return (
     <div className="container mx-auto p-6 rounded-lg shadow-lg h-screen">
-      <h1 className="text-4xl font-bold text-red-400 mb-8">My Journal</h1>
+      <h1 className="text-4xl font-bold mb-8">My Journal</h1>
       {editingNote ? (
         <NoteEditor
           note={editingNote}

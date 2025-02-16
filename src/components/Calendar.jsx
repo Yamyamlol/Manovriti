@@ -8,6 +8,7 @@ import {
   addMonths,
   subMonths,
   isAfter,
+  getDay,
 } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -24,15 +25,21 @@ const emotions = {
   confused: { color: "bg-purple-200", emoji: "🤔" },
 };
 
-const Calendar = ({ calendarEmotions, setCalendarEmotions, setSelectedDate }) => {
+const Calendar = ({
+  calendarEmotions,
+  setCalendarEmotions,
+  setSelectedDate,
+}) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDateState, setSelectedDateState] = useState(null);
-  const [hoveredDate, setHoveredDate] = useState(null);
 
   const daysInMonth = eachDayOfInterval({
     start: startOfMonth(currentDate),
     end: endOfMonth(currentDate),
   });
+
+  const firstDayOfMonth = startOfMonth(currentDate);
+  const startDayOfWeek = (getDay(firstDayOfMonth) + 6) % 7; // Adjusting to Monday as start of the week
 
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -47,7 +54,7 @@ const Calendar = ({ calendarEmotions, setCalendarEmotions, setSelectedDate }) =>
   const handleDateClick = (date) => {
     if (isSameMonth(date, currentDate) && !isAfter(date, today)) {
       setSelectedDateState(date);
-      setSelectedDate(date); // Set the selected date in the parent component (EmotionalCalendar)
+      setSelectedDate(date);
     }
   };
 
@@ -67,7 +74,7 @@ const Calendar = ({ calendarEmotions, setCalendarEmotions, setSelectedDate }) =>
 
   return (
     <div className="max-h-screen min-w-100 p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6">
+      <div className="max-h-[370px]max-w-md w-full bg-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={handlePreviousMonth}
@@ -98,6 +105,13 @@ const Calendar = ({ calendarEmotions, setCalendarEmotions, setSelectedDate }) =>
               {day}
             </div>
           ))}
+
+          {/* Add empty spaces before the first day */}
+          {Array.from({ length: startDayOfWeek }).map((_, index) => (
+            <div key={`empty-${index}`} className="h-12 opacity-0"></div>
+          ))}
+
+          {/* Render actual days */}
           {daysInMonth.map((date) => {
             const dateKey = format(date, "yyyy-MM-dd");
             const emotion = calendarEmotions[dateKey];
@@ -110,13 +124,19 @@ const Calendar = ({ calendarEmotions, setCalendarEmotions, setSelectedDate }) =>
                 onClick={() => handleDateClick(date)}
                 className={`h-12 flex items-center justify-center rounded-lg transition cursor-pointer 
                 ${!isCurrentMonth ? "text-gray-300" : "hover:bg-gray-50"} 
-                ${selectedDateState && date.getTime() === selectedDateState.getTime()
-                  ? "bg-gray-100"
-                  : ""} 
+                ${
+                  selectedDateState &&
+                  date.getTime() === selectedDateState.getTime()
+                    ? "bg-gray-100"
+                    : ""
+                } 
                 ${isFuture ? "text-gray-300 cursor-not-allowed" : ""} 
                 ${
                   emotion
-                    ? `text-3xl ${Object.values(emotions).find((e) => e.emoji === emotion)?.color}`
+                    ? `text-3xl ${
+                        Object.values(emotions).find((e) => e.emoji === emotion)
+                          ?.color
+                      }`
                     : "text-xl"
                 }`}
                 disabled={!isCurrentMonth || isFuture}

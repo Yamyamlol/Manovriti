@@ -12,7 +12,7 @@ const EmotionalCalendar = () => {
   // Other logic (handlePreviousMonth, handleNextMonth, etc.)
 
   return (
-    <div className="min-h-screen max-h-screen">
+    <div className="pl-2 min-h-screen max-h-screen">
       <div className="flex">
         <Calendar
           calendarEmotions={calendarEmotions}

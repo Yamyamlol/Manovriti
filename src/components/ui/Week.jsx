@@ -2,10 +2,14 @@ import PropTypes from "prop-types";
 
 const Week = ({ mood, day, date }) => {
   return (
-    <div className="flex items-center justify-center flex-col p-4 bg-gray-100 rounded-lg text-center">
-      <div className="text-lg font-semibold">{day}</div>
-      <div className="text-xl">{date}</div>
-      <div className="text-3xl">{mood}</div>
+    <div className="flex items-center bg-red-50 justify-between flex-col p-4 bg-gray-100 rounded-lg text-center">
+      <div className="flex  flex-col">
+        <div>
+          <div className="text-lg font-semibold">{day}</div>
+          <div className="text-xl">{date}</div>
+        </div>
+        <div className="text-6xl">{mood}</div>
+      </div>
     </div>
   );
 };

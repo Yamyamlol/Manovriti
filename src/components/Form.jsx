@@ -4,19 +4,18 @@ import FormLabels from "./Formlabels.jsx";
 const Form = ({ formType }) => {
   return (
     <form className="space-y-2">
-      {formType === "user" && <FormLabels label="Name" id="name" required />}
-
-      <FormLabels label="Email" id="email" type="email" required />
-      <FormLabels label="Password" id="password" type="password" required />
-
-      {formType === "user" && (
+      {formType === "pro" && (
         <FormLabels
-          label="Confirm Password"
-          id="confirmPassword"
+          label="User ID"
+          id="UserId"
           type="password"
           required
         />
       )}
+
+      <FormLabels label="Email" id="email" type="email" required />
+      <FormLabels label="Password" id="password" type="password" required />
+
       {formType === "pro" && (
         <a
           href="#"
@@ -30,7 +29,7 @@ const Form = ({ formType }) => {
         type="submit"
         className="w-full bg-red-400 text-white py-1.5 px-4 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold hover:bg-red-300 transition cursor-pointer"
       >
-        {formType === "pro" ? "Sign In" : "Sign Up"}
+        Login
       </button>
     </form>
   );
