@@ -2,7 +2,7 @@
 const MonthlyEmotion = () => {
   return (
     <div className="p-4 flex justify-center">
-      <div className="h-[370px] w-[800px] shadow-lg bg-white rounded-2xl">
+      <div className="h-[370px] shadow-lg bg-white rounded-2xl">
         <div className="flex flex-col items-center">
           <div className="font-bold p-6 text-3xl text-center">
             Emotion of the Month
